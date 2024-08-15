@@ -1,3 +1,9 @@
+# ARCHITECTURAL DIAGRAM OF INFRASTRUCTURE
+
+![eks cluster microservice architecture diagram](./Images/eks%20cluster%20microservice%20architecture%20diagram.png)
+<br>
+<br>
+
 
 # SOCK SHOP APP DEPLOY
 

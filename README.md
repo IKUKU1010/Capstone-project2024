@@ -1,3 +1,8 @@
+# ARCHITECTURAL DIAGRAM OF INFRASTRUCTURE
+
+![eks cluster microservice architecture diagram](./Images/eks%20cluster%20microservice%20architecture%20diagram.png)
+<br>
+<br>
 # Capstone-project2024
 
 This brief documentation outlines the essential steps and considerations for setting up a CI/CD pipeline using GitHub Actions, providing a clear guide for automating the deployment of SOCK SHOP app to an EKS cluster.
@@ -138,7 +143,7 @@ These secrets allow GitHub Actions to securely interact with your AWS account an
 
 ![github secrets](./Images/github%20secrets.png)
 
-
+<br>
 
 ![github secrets 2](./Images/github%20secrets%202.png)
 
@@ -159,15 +164,19 @@ This CI/CD pipeline setup automates the deployment of the SOCK SHOP app, ensurin
 
 Below are picture evidence of my work flow deployment:
 
+<br>
 
 ![cluster created via cicd pipeline](./Images/cluster%20created%20via%20cicd%20pipeline.png)
 
+<br>
 
 ![EC2 instanced created by pipeline](./Images/EC2%20instanced%20created%20by%20pipeline.png)
 
+<br>
 
 ![terrafom state files on cicd s3 bucket](./Images/terrafom%20state%20files%20on%20cicd%20s3%20bucket.png)
 
+<br>
 
 ![s3 bucket on cicd infastructure](./Images/s3%20bucket%20on%20cicd%20infastructure.png)
 
