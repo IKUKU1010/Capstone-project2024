@@ -22,8 +22,12 @@ terraform apply --auto-approve
 ```
 ![creating EKS cluster](./Images/creating%20EKS%20cluster.png)
 
+<br>
+
 
 ![EKS Cluster Deployment Screenshot](./Images/cluster%20created.png)
+
+<br>
 
 ![worker nodes running](./Images/worker%20nodes%20running.png)
 
@@ -84,6 +88,7 @@ kubectl get pods -n sock-shop
 kubectl get service -n sock-shop
 
 ```
+<br>
 
 ![creating and deploying the Socks Shop application](./Images/creating%20and%20deploying%20the%20Socks%20Shop%20application.png)
 
@@ -124,6 +129,8 @@ kubectl get service -n sock-shop
 
 
 ![pods running](./Images/pods.png)
+
+<br>
 
 ![services up and running](./Images/services.png)
 
@@ -189,6 +196,7 @@ Go to the AWS Management Console. Navigate to Route 53 > Hosted Zones. If you ha
 
 ![create A record](./Images/create%20A%20record.png)
 
+<br>
 
 ![A records created](./Images/A%20records%20created.png)
 
@@ -199,9 +207,15 @@ Go to the AWS Management Console. Navigate to Route 53 > Hosted Zones. If you ha
 
 ![sock-shop frontend](./Images/sock-shop%20frontend.png)
 
+<br>
+
 ![orders svc](./Images/orders%20svc.png)
+<br>
+
 
 ![sockshop 1](./Images/sockshop1.png)
+<br>
+
 
 ![sockshop 2](./Images/sockshop%202.png)
 
@@ -231,6 +245,7 @@ kubectl apply -f ingress.yml
 
 ![prometheus](./Images/prometheus.png)
 
+<br>
 
 
 ![grafana logged in](./Images/grafana%20logged%20in.png)
@@ -238,12 +253,22 @@ kubectl apply -f ingress.yml
 
 ## Grafana dashboard set up for the project
 
+<br>
 
 ![dashboard 1](./Images/dashboard%201.png)
 
+<br>
+
+
 ![dashboard 2](./Images/dashboard%202.png)
 
+<br>
+
+
 ![dashboard 3](./Images/dashboard%203.png)
+
+<br>
+
 
 ![dashboard 4](./Images/dashboard%204.png)
 
@@ -328,6 +353,15 @@ kubectl get clusterissuer
 kubectl get certificates -A
 
 ```
+
+## Certificate issued and https secure connection established for our webapp domain
+
+![letsencrypt certificate issued](./Images/letsencrypt%20certificate%20issued.png)
+
+<br>
+
+
+![letsencrypt https live](./Images/letsencrypt%20https%20live.png)
 
 
 ## Configure AlertManager
