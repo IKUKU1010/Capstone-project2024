@@ -1,5 +1,5 @@
 
-# SOCKY APP DEPLOY
+# SOCK SHOP APP DEPLOY
 
 ## Requirements and Prerequisites:
 
