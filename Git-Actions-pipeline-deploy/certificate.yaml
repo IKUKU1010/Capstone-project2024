@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: capstn2-tls
+  namespace: sock-shop
+spec:
+  secretName: capstn2-tls
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
+  commonName: nayokians.me
+  dnsNames:
+    - nayokians.me
+
