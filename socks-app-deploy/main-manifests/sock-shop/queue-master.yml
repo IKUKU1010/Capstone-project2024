@@ -1,0 +1,58 @@
+# Deployment script for queue-master
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: queue-master
+  labels:
+    name: queue-master
+  namespace: sock-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: queue-master
+  template:
+    metadata:
+      labels:
+        name: queue-master
+    spec:
+      containers:
+      - name: queue-master
+        image: weaveworksdemos/queue-master:latest
+        env:
+         - name: JAVA_OPTS
+           value: -Xms64m -Xmx128m -XX:+UseG1GC -Djava.security.egd=file:/dev/urandom -Dspring.zipkin.enabled=false
+        resources:
+          limits:
+            cpu: 300m
+            memory: 500Mi
+          requests:
+            cpu: 100m
+            memory: 300Mi
+        ports:
+        - containerPort: 80
+      nodeSelector:
+        kubernetes.io/os: linux
+
+
+# Service script for queue-master
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: queue-master-svc
+  annotations:
+        prometheus.io/scrape: 'true'
+  labels:
+    name: queue-master
+  namespace: sock-shop
+spec:
+  ports:
+    # the port that this service should serve on
+  - port: 80
+    targetPort: 80
+  selector:
+    name: queue-master
+
+

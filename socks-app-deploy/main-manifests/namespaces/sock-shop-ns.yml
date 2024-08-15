@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sock-shop
+  annotations:
+    net.kubernetes.io/network-policy: |
+      {
+        "ingress": {
+          "isolation": "DefaultDeny"
+        }
+      }

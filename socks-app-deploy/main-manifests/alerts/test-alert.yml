@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: test-alert
+  namespace: sock-shop
+spec:
+  groups:
+  - name: test-group
+    rules:
+    - alert: TestAlert
+      expr: vector(1)
+      for: 1m
+      labels:
+        severity: slack
+      annotations:
+        summary: "Test Alert"
+        description: "This is a test alert to verify Slack integration."

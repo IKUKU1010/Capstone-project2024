@@ -1,0 +1,49 @@
+# Deployment script for catalogue database section of the application
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalogue-db
+  labels:
+    name: catalogue-db
+  namespace: sock-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: catalogue-db
+  template:
+    metadata:
+      labels:
+        name: catalogue-db
+    spec:
+      containers:
+      - name: catalogue-db
+        image: weaveworksdemos/catalogue-db:latest
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: fake_password
+          - name: MYSQL_DATABASE
+            value: socksdb
+        ports:
+        - name: mysql
+          containerPort: 3306
+      nodeSelector:
+        kubernetes.io/os: linux
+
+# Service script to expose cart catalogue database section of the application
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: catalogue-db-svc
+  labels:
+    name: catalogue-db
+  namespace: sock-shop
+spec:
+  ports:
+    # the port that this service should serve on
+  - port: 3306
+    targetPort: 3306
+  selector:
+    name: catalogue-db
