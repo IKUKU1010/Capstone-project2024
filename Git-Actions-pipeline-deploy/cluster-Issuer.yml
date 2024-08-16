@@ -7,7 +7,7 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory  #Acme server url
-    email: engr.nnamdiemmanuel@gmail.com
+    email: tenman2k2@gmail.com
     privateKeySecretRef:
       name: letsencrypt-prod        #Name of secret used to store the ACME account private key
     solvers:

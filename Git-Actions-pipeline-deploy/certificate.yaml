@@ -1,10 +1,10 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: capstn2-tls
+  name: capstn24-tls
   namespace: sock-shop
 spec:
-  secretName: capstn2-tls
+  secretName: capstn24-tls
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-prod
