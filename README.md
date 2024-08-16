@@ -163,6 +163,10 @@ This CI/CD pipeline setup automates the deployment of the SOCK SHOP app, ensurin
 
 
 Below are picture evidence of my work flow deployment:
+<br>
+
+![Successful deployment of cicd pipeline](./Images/Github%20Actions%20CICD.png)
+
 
 <br>
 
