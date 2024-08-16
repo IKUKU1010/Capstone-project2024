@@ -57,6 +57,9 @@ jobs:
 
       - name: Apply aws-auth ConfigMap
         run: kubectl apply -f aws-auth.yaml
+      
+      - name: Create namespace sock-shop
+        run: kubectl create namespace sock-shop
 
       - name: Update kubeconfig
         run: |
@@ -71,7 +74,6 @@ jobs:
           helm repo update jetstack
           helm install cert-manager jetstack/cert-manager \
             --namespace sock-shop \
-            --create-namespace \
             --version v1.15.2 \
             --set installCRDs=true
           kubectl apply -f cluster-issuer.yml
