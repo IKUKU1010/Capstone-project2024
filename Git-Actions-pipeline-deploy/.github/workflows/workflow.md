@@ -1,3 +1,7 @@
+
+### Below are the contents of the actions file named workflow.yaml. To run the git action pipeline save the contents of this file in a yaml file and it will run on push action.
+
+
 name: CI/CD Workflow
 
 on:
