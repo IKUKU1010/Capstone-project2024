@@ -55,42 +55,60 @@ jobs:
           terraform -chdir=terraform/ init
           terraform -chdir=terraform/ apply --auto-approve
 
+      - name: Change Back to Project Root
+        run: cd ..
+      
+      - name: Update kubeconfig
+        run: |
+          aws eks update-kubeconfig --name socks-shop-CICD001 --region ${{ vars.REGION }}
+
       - name: Apply aws-auth ConfigMap
-        run: kubectl apply -f aws-auth.yaml
+        run: kubectl apply -f aws-auth.yaml --validate=false
       
       - name: Create namespace sock-shop
-        run: kubectl create namespace sock-shop
+        run: kubectl get namespace sock-shop || kubectl create namespace sock-shop
 
       - name: Update kubeconfig
         run: |
-          aws eks update-kubeconfig --name socks-shop-CICD001 --region ${{ vars.REGION }} --name sock-shop
+          aws eks update-kubeconfig --name socks-shop-CICD001 --region ${{ vars.REGION }}
 
       - name: Deploy application
-        run: helm install capstoneapp helm/app --namespace sock-shop
+        run: helm upgrade --install capstoneapp helm/app --namespace sock-shop
 
       - name: Deploy Let's Encrypt
         run: |
           helm repo add jetstack https://charts.jetstack.io --force-update
           helm repo update jetstack
-          helm install cert-manager jetstack/cert-manager \
+          helm upgrade --install cert-manager jetstack/cert-manager \
             --namespace sock-shop \
             --version v1.15.2 \
-            --set installCRDs=true
-          kubectl apply -f cluster-issuer.yml
-          kubectl apply -f certificate.yaml
+            --set crds.enabled=true
 
       - name: Deploy Prometheus and Grafana
         run: |
-          helm install prometheus prometheus-community/kube-prometheus-stack --namespace sock-shop
+          helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+          helm repo update
+          helm upgrade --install prometheus prometheus-community/kube-prometheus-stack --namespace sock-shop
 
       - name: Deploy Nginx Ingress Controller
         run: |
-          helm repo add nginx https://kubernetes.github.io/ingress-nginx
+          helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx/
           helm repo update
-          helm install ingress-nginx ingress-nginx/ingress-nginx --namespace sock-shop
+          helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx --namespace sock-shop
 
       - name: Delay
-        run: sleep 120s
+        run: sleep 40s
+
+      - name: Change Back to Project Root
+        run: cd ..
 
       - name: Deploy Ingress Resources
         run: kubectl apply -f ingress.yml
+
+      - name: Apply Cluster Issuer
+        run: kubectl apply -f cluster-Issuer.yml
+
+      - name: Apply Certificate
+        run: kubectl apply -f certificate.yaml
+               
+
