@@ -1,7 +1,9 @@
 
-### Below are the contents of the actions file named workflow.yaml. To run the git action pipeline save the contents of this file in a yaml file and it will run on push action.
+### Below are the contents of the actions file named workflow.yaml. To run the git action pipeline save the contents of this file in a yaml file and it will run on push action. **Important Note: This part of this repo is for projevt submisson only. The git action workflow CICD was diployed using another repo; 
 
+https://github.com/IKUKU1010/infrapipetest.git
 
+===============================================================================================================
 name: CI/CD Workflow
 
 on:
