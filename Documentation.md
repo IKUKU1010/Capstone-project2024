@@ -410,8 +410,9 @@ kubectl apply -f prometheus-rule.yml
 
 ![alerts firing](./Images/alerts%20firing.png)
 
+<br>
 
-
+![alerts firing](./Images/slack%20alerts.png)
 
 
 
